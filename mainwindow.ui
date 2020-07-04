@@ -252,7 +252,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="simTab">
      <property name="autoFillBackground">
       <bool>true</bool>
      </property>
