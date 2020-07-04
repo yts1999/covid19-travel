@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>900</height>
+    <height>920</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -28,9 +28,6 @@
       <width>800</width>
       <height>650</height>
      </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">image: url(:/map/map.jpg);</string>
     </property>
     <property name="text">
      <string/>
@@ -66,7 +63,7 @@
       <x>0</x>
       <y>650</y>
       <width>800</width>
-      <height>250</height>
+      <height>270</height>
      </rect>
     </property>
     <property name="font">
@@ -218,7 +215,7 @@
         <x>2</x>
         <y>80</y>
         <width>790</width>
-        <height>140</height>
+        <height>160</height>
        </rect>
       </property>
      </widget>
@@ -264,6 +261,69 @@
      </attribute>
     </widget>
    </widget>
+   <widget class="QLabel" name="highRiskLabel">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>590</y>
+      <width>80</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>华文细黑</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>高风险城市</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="midRiskLabel">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>610</y>
+      <width>80</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>华文细黑</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>中风险城市</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lowRiskLabel">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>630</y>
+      <width>80</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>华文细黑</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>低风险城市</string>
+    </property>
+   </widget>
+   <zorder>map</zorder>
+   <zorder>tabWidget</zorder>
+   <zorder>title</zorder>
+   <zorder>highRiskLabel</zorder>
+   <zorder>midRiskLabel</zorder>
+   <zorder>lowRiskLabel</zorder>
   </widget>
  </widget>
  <resources/>
