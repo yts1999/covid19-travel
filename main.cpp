@@ -6,8 +6,6 @@
 #include <QTextStream>
 
 void outputMessage(QtMsgType type, const QMessageLogContext &context, const QString &msg) {
-    QByteArray localMsg = msg.toLocal8Bit();
-
     QString strType = "";
     switch (type) {
         case QtDebugMsg:
@@ -26,10 +24,8 @@ void outputMessage(QtMsgType type, const QMessageLogContext &context, const QStr
             strType = "Info";
             break;
     }
-
     QString strDateTime = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss");
     QString strMessage = QString("[%1][%2]%3").arg(strType).arg(strDateTime).arg(msg);
-
     QFile file("log.txt");
     file.open(QIODevice::WriteOnly | QIODevice::Append);
     QTextStream stream(&file);
