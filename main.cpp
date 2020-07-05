@@ -29,7 +29,11 @@ void outputMessage(QtMsgType type, const QMessageLogContext &context, const QStr
     QFile file("log.txt");
     file.open(QIODevice::WriteOnly | QIODevice::Append);
     QTextStream stream(&file);
-    stream << strMessage << "\n";
+    #ifdef Q_OS_WIN
+        stream << strMessage << "\r\n";
+    #else
+        stream << strMessage << "\n";
+    #endif
     stream.flush();
     file.close();
 }

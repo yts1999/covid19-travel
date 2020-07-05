@@ -18,11 +18,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     args.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    solver.cpp
 
 HEADERS += \
     args.h \
-    mainwindow.h
+    mainwindow.h \
+    solver.h
 
 FORMS += \
     mainwindow.ui

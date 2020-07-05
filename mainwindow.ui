@@ -33,30 +33,6 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="title">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>520</width>
-      <height>40</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>方正舒体</family>
-      <pointsize>20</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="text">
-     <string>COVID-19疫情环境下低风险旅行模拟系统</string>
-    </property>
-   </widget>
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
@@ -68,7 +44,7 @@
     </property>
     <property name="font">
      <font>
-      <family>华文细黑</family>
+      <family>黑体</family>
       <pointsize>12</pointsize>
      </font>
     </property>
@@ -154,7 +130,7 @@
      <widget class="QCheckBox" name="timeLimitCheck">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>250</x>
         <y>45</y>
         <width>120</width>
         <height>25</height>
@@ -170,9 +146,9 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>480</x>
         <y>45</y>
-        <width>61</width>
+        <width>20</width>
         <height>25</height>
        </rect>
       </property>
@@ -186,9 +162,9 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>540</x>
+        <x>610</x>
         <y>45</y>
-        <width>61</width>
+        <width>20</width>
         <height>25</height>
        </rect>
       </property>
@@ -209,7 +185,7 @@
        <string>开始规划</string>
       </property>
      </widget>
-     <widget class="QTextBrowser" name="textBrowser">
+     <widget class="QTextBrowser" name="resultBrowser">
       <property name="geometry">
        <rect>
         <x>2</x>
@@ -225,14 +201,14 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>380</x>
         <y>45</y>
-        <width>110</width>
+        <width>90</width>
         <height>25</height>
        </rect>
       </property>
       <property name="maximum">
-       <number>7</number>
+       <number>6</number>
       </property>
      </widget>
      <widget class="QSpinBox" name="hourInput">
@@ -241,9 +217,48 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>410</x>
+        <x>510</x>
         <y>45</y>
-        <width>110</width>
+        <width>90</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>23</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="stTimeLabel">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>45</y>
+        <width>70</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>出发时间</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="stTimeUnitLabel">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>45</y>
+        <width>20</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>时</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="stTimeInput">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>45</y>
+        <width>90</width>
         <height>25</height>
        </rect>
       </property>
@@ -259,6 +274,120 @@
      <attribute name="title">
       <string>线路模拟</string>
      </attribute>
+     <widget class="QLabel" name="simUserInputLabel">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>60</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>用户名</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="simUserInput">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>10</y>
+        <width>130</width>
+        <height>25</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="simButton">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>10</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>开始模拟</string>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="simResultBrowser">
+      <property name="geometry">
+       <rect>
+        <x>2</x>
+        <y>50</y>
+        <width>790</width>
+        <height>190</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="timeLabel">
+      <property name="geometry">
+       <rect>
+        <x>700</x>
+        <y>10</y>
+        <width>90</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="continueSimButton">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>10</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>继续模拟</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="timeHintLabel">
+      <property name="geometry">
+       <rect>
+        <x>620</x>
+        <y>10</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>当前时间：</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="simUserHintLabel">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>10</y>
+        <width>80</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>当前用户：</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="simUserLabel">
+      <property name="geometry">
+       <rect>
+        <x>510</x>
+        <y>10</y>
+        <width>110</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QLabel" name="highRiskLabel">
@@ -272,7 +401,7 @@
     </property>
     <property name="font">
      <font>
-      <family>华文细黑</family>
+      <family>黑体</family>
       <pointsize>12</pointsize>
      </font>
     </property>
@@ -291,7 +420,7 @@
     </property>
     <property name="font">
      <font>
-      <family>华文细黑</family>
+      <family>黑体</family>
       <pointsize>12</pointsize>
      </font>
     </property>
@@ -310,7 +439,7 @@
     </property>
     <property name="font">
      <font>
-      <family>华文细黑</family>
+      <family>黑体</family>
       <pointsize>12</pointsize>
      </font>
     </property>
@@ -318,12 +447,19 @@
      <string>低风险城市</string>
     </property>
    </widget>
-   <zorder>map</zorder>
-   <zorder>tabWidget</zorder>
-   <zorder>title</zorder>
-   <zorder>highRiskLabel</zorder>
-   <zorder>midRiskLabel</zorder>
-   <zorder>lowRiskLabel</zorder>
+   <widget class="QLabel" name="stateIcon">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>24</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
