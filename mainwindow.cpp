@@ -360,25 +360,31 @@ void MainWindow::next_step() {
                             break;
                     }
         }
-    ui->stateIcon->clear();
-    if (curTime < timePeriod[curPeriod].first) {
-        ui->stateIcon->setGeometry(city_coords[timetable[simPath[curPeriod]].st].x() - ui->stateIcon->width() / 2, city_coords[timetable[simPath[curPeriod]].st].y() - ui->stateIcon->height() / 2, ui->stateIcon->width(), ui->stateIcon->height());
-        ui->stateIcon->setPixmap(waitIcon);
-    }
-    else {
-        int x = ((timePeriod[curPeriod].second - curTime) * city_coords[timetable[simPath[curPeriod]].st].x() + (curTime - timePeriod[curPeriod].first) * city_coords[timetable[simPath[curPeriod]].ed].x()) / (timePeriod[curPeriod].second - timePeriod[curPeriod].first);
-        int y = ((timePeriod[curPeriod].second - curTime) * city_coords[timetable[simPath[curPeriod]].st].y() + (curTime - timePeriod[curPeriod].first) * city_coords[timetable[simPath[curPeriod]].ed].y()) / (timePeriod[curPeriod].second - timePeriod[curPeriod].first);
-        ui->stateIcon->setGeometry(x - ui->stateIcon->width() / 2, y - ui->stateIcon->height() / 2, ui->stateIcon->width(), ui->stateIcon->height());
-        switch (timetable[simPath[curPeriod]].type) {
-            case TRAIN:
-                ui->stateIcon->setPixmap(trainIcon);
-                break;
-            case AIRPLANE:
-                ui->stateIcon->setPixmap(airplaneIcon);
-                break;
-            case COACH:
-                ui->stateIcon->setPixmap(coachIcon);
-                break;
+    if (curPeriod == timePeriod.size())
+        ui->stateIcon->setGeometry(city_coords[timetable[simPath.back()].ed].x() - ui->stateIcon->width() / 2, city_coords[timetable[simPath.back()].ed].y() - ui->stateIcon->height() / 2, ui->stateIcon->width(), ui->stateIcon->height());
+    else
+        if (curTime < timePeriod[curPeriod].first) {
+            ui->stateIcon->clear();
+            ui->stateIcon->setGeometry(city_coords[timetable[simPath[curPeriod]].st].x() - ui->stateIcon->width() / 2, city_coords[timetable[simPath[curPeriod]].st].y() - ui->stateIcon->height() / 2, ui->stateIcon->width(), ui->stateIcon->height());
+            ui->stateIcon->setPixmap(waitIcon);
         }
-    }
+        else {
+            if (curTime == timePeriod[curPeriod].first)
+                ui->stateIcon->clear();
+            int x = ((timePeriod[curPeriod].second - curTime) * city_coords[timetable[simPath[curPeriod]].st].x() + (curTime - timePeriod[curPeriod].first) * city_coords[timetable[simPath[curPeriod]].ed].x()) / (timePeriod[curPeriod].second - timePeriod[curPeriod].first);
+            int y = ((timePeriod[curPeriod].second - curTime) * city_coords[timetable[simPath[curPeriod]].st].y() + (curTime - timePeriod[curPeriod].first) * city_coords[timetable[simPath[curPeriod]].ed].y()) / (timePeriod[curPeriod].second - timePeriod[curPeriod].first);
+            ui->stateIcon->setGeometry(x - ui->stateIcon->width() / 2, y - ui->stateIcon->height() / 2, ui->stateIcon->width(), ui->stateIcon->height());
+            if (curTime == timePeriod[curPeriod].first)
+                switch (timetable[simPath[curPeriod]].type) {
+                    case TRAIN:
+                        ui->stateIcon->setPixmap(trainIcon);
+                        break;
+                    case AIRPLANE:
+                        ui->stateIcon->setPixmap(airplaneIcon);
+                        break;
+                    case COACH:
+                        ui->stateIcon->setPixmap(coachIcon);
+                        break;
+                }
+        }
 }
