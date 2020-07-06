@@ -5,7 +5,6 @@
 #include <QPainter>
 #include <QPen>
 #include <QColor>
-#include <iostream>
 #include <QMessageBox>
 #include <QApplication>
 #include <QDesktopWidget>
