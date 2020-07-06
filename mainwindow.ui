@@ -428,6 +428,11 @@
         <height>240</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <family>黑体</family>
+       </font>
+      </property>
       <property name="editTriggers">
        <set>QAbstractItemView::NoEditTriggers</set>
       </property>
