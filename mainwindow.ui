@@ -506,6 +506,23 @@
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>userInput</tabstop>
+  <tabstop>startInput</tabstop>
+  <tabstop>endInput</tabstop>
+  <tabstop>stTimeInput</tabstop>
+  <tabstop>timeLimitCheck</tabstop>
+  <tabstop>dayInput</tabstop>
+  <tabstop>hourInput</tabstop>
+  <tabstop>startButton</tabstop>
+  <tabstop>resultBrowser</tabstop>
+  <tabstop>simUserInput</tabstop>
+  <tabstop>simButton</tabstop>
+  <tabstop>continueSimButton</tabstop>
+  <tabstop>simResultBrowser</tabstop>
+  <tabstop>timetableView</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
