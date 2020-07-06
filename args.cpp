@@ -332,3 +332,6 @@ const Timetable timetable[350] = {{.st = BEIJING, .ed = JINAN, .stTime = 9, .dur
                                   {.st = SHENZHEN, .ed = GUANGZHOU, .stTime = 9, .dur = 2, .type = COACH},
                                   {.st = SHENZHEN, .ed = GUANGZHOU, .stTime = 11, .dur = 2, .type = COACH},
                                   {.st = SHENZHEN, .ed = GUANGZHOU, .stTime = 23, .dur = 2, .type = COACH}};
+
+const double city_riskval[3] = {0.2, 0.5, 0.9};
+const int transport_riskval[3] = {5, 9, 2};

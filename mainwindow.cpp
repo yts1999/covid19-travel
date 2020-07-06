@@ -13,6 +13,7 @@
 #include <QRegExp>
 #include <QtDebug>
 #include <QScrollBar>
+#include <QStandardItem>
 
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent), ui(new Ui::MainWindow), pixmap(":/map/map.jpg"), trainIcon(":/map/train.png"), airplaneIcon(":/map/airplane.png"), coachIcon(":/map/coach.png"), waitIcon(":/map/wait.png") {
@@ -20,6 +21,32 @@ MainWindow::MainWindow(QWidget *parent):
     setFixedSize(800, 920);
     move((QApplication::desktop()->width() - this->width()) / 2, (QApplication::desktop()->height() - this->height()) / 2);
     ui->userInput->setValidator(new QRegExpValidator(QRegExp("^[A-Za-z0-9_]{0,15}$"), this));
+    itemModel = new QStandardItemModel(TIMETABLE_SIZE, 6, this);
+    itemModel->setHeaderData(0, Qt::Horizontal, "交通工具");
+    itemModel->setHeaderData(1, Qt::Horizontal, "起始城市");
+    itemModel->setHeaderData(2, Qt::Horizontal, "到达城市");
+    itemModel->setHeaderData(3, Qt::Horizontal, "起始时间");
+    itemModel->setHeaderData(4, Qt::Horizontal, "到达时间");
+    itemModel->setHeaderData(5, Qt::Horizontal, "用时");
+    for (int i = 0; i < TIMETABLE_SIZE; i++) {
+        switch (timetable[i].type) {
+            case TRAIN:
+                itemModel->setItem(i, 0, new QStandardItem("火车"));
+                break;
+            case AIRPLANE:
+                itemModel->setItem(i, 0, new QStandardItem("飞机"));
+                break;
+            case COACH:
+                itemModel->setItem(i, 0, new QStandardItem("汽车"));
+                break;
+        }
+        itemModel->setItem(i, 1, new QStandardItem(cities[timetable[i].st]));
+        itemModel->setItem(i, 2, new QStandardItem(cities[timetable[i].ed]));
+        itemModel->setItem(i, 3, new QStandardItem(time2str(timetable[i].stTime)));
+        itemModel->setItem(i, 4, new QStandardItem(time2str(timetable[i].stTime + timetable[i].dur)));
+        itemModel->setItem(i, 5, new QStandardItem(QString::number(timetable[i].dur)));
+    }
+    ui->timetableView->setModel(itemModel);
     city_coords[0] = QPoint(583, 267);
     city_coords[1] = QPoint(601, 278);
     city_coords[2] = QPoint(565, 311);
@@ -235,9 +262,11 @@ void MainWindow::on_simButton_clicked() {
     simPath = userPath[usr].path;
     curTime = simStTime;
     curPeriod = 0;
+    curRiskval = 0;
     ui->simResultBrowser->clear();
     ui->simUserLabel->setText(simUsr);
     ui->timeLabel->setText(time2str(curTime));
+    ui->riskvalLabel->setText(QString::number(curRiskval));
     ui->map->setPixmap(simLinemap);
     timePeriod.resize(simPath.size());
     for (int curTime = simStTime, i = 0; i < simPath.size(); i++) {
@@ -286,6 +315,7 @@ void MainWindow::on_continueSimButton_clicked() {
     ui->continueSimButton->setEnabled(false);
     ui->simUserLabel->setText(simUsr);
     ui->timeLabel->setText(time2str(curTime));
+    ui->riskvalLabel->setText(QString::number(curRiskval));
     ui->map->setPixmap(simLinemap);
     if (curTime < timePeriod[curPeriod].first) {
         ui->stateIcon->setGeometry(city_coords[timetable[simPath[curPeriod]].st].x() - ui->stateIcon->width() / 2, city_coords[timetable[simPath[curPeriod]].st].y() - ui->stateIcon->height() / 2, ui->stateIcon->width(), ui->stateIcon->height());
@@ -313,6 +343,11 @@ void MainWindow::on_continueSimButton_clicked() {
 void MainWindow::next_step() {
     curTime++;
     ui->timeLabel->setText(time2str(curTime));
+    if (curTime <= timePeriod[curPeriod].first)
+        curRiskval += city_riskval[risk_level[timetable[simPath[curPeriod]].st]];
+    else
+        curRiskval += transport_riskval[timetable[simPath[curPeriod]].type] * city_riskval[risk_level[timetable[simPath[curPeriod]].st]];
+    ui->riskvalLabel->setText(QString::number(curRiskval));
     if (curTime == timePeriod[curPeriod].first)
         switch (timetable[simPath[curPeriod]].type) {
             case TRAIN:

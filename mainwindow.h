@@ -8,6 +8,7 @@
 #include <QPen>
 #include <QHash>
 #include <QTimer>
+#include <QStandardItemModel>
 #include <vector>
 
 QT_BEGIN_NAMESPACE
@@ -35,6 +36,7 @@ private:
         std::vector<int> path;
     };
     Ui::MainWindow *ui;
+    QStandardItemModel *itemModel;
     QPoint city_coords[37];
     QPixmap pixmap, trainIcon, airplaneIcon, coachIcon, waitIcon;
     QPen redPen, yellowPen, greenPen;
@@ -47,6 +49,7 @@ private:
     std::vector<int> simPath;
     std::vector<std::pair<int, int> > timePeriod;
     int simState, curTime, curPeriod;
+    double curRiskval;
     QString simUsr;
     QTimer simTimer;
 };

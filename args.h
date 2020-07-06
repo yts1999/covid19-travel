@@ -55,4 +55,7 @@ struct Timetable {
 #define TIMETABLE_SIZE 322
 extern const Timetable timetable[350];
 
+extern const double city_riskval[3];
+extern const int transport_riskval[3];
+
 #endif // ARGS_H

@@ -1,9 +1,6 @@
 #include "solver.h"
 #include <cfloat>
 
-const double Solver::city_riskval[3] = {0.2, 0.5, 0.9};
-const int Solver::transport_riskval[3] = {5, 9, 2};
-
 Solver::Solver() {
     for (int i = 0; i < TIMETABLE_SIZE; i++)
         edges[timetable[i].st][timetable[i].stTime].push_back(Edge(timetable[i].ed, timetable[i].dur, timetable[i].type, i));

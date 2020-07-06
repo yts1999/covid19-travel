@@ -13,8 +13,6 @@ public:
     std::pair<std::pair<double, int>, std::vector<int> > solve(int st, int stTime, int ed);
     std::pair<std::pair<double, int>, std::vector<int> > solve(int st, int stTime, int ed, int timeLimit);
 private:
-    static const double city_riskval[3];
-    static const int transport_riskval[3];
     struct Edge {
         int ed, dur, type, timetable_no;
         Edge() {}
